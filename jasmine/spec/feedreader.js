@@ -109,7 +109,6 @@ $(function () {
                 originalEntries = $('.entry-link');
                 loadFeed(1, done);
             });
-
         });
 
         /* A test that ensures when a new feed is loaded
