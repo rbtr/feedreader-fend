@@ -44,6 +44,11 @@ function init() {
  * which will be called after everything has run successfully.
  */
 function loadFeed(id, cb) {
+    // Squash any indexOutOfBounds errors and default back to the home page
+    if (id > allFeeds.length - 1) {
+        id = 0;
+    }
+
     var feedUrl = allFeeds[id].url,
         feedName = allFeeds[id].name;
 
