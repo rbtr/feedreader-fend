@@ -32,9 +32,10 @@ $(function () {
          * and that the URL is not empty.
          */
         it('have URLs', function () {
-            allFeeds.forEach(function (f) {
-                expect(f.url).toBeDefined();
-                expect(f.url).not.toBe('');
+            allFeeds.forEach(function (feed) {
+                expect(feed.url).toBeDefined();
+                expect(feed.url).not.toBe('');
+                // toBeTruthy works, but I find this more descriptive
             });
         });
 
@@ -44,9 +45,10 @@ $(function () {
          * and that the name is not empty.
          */
         it('have names', function () {
-            allFeeds.forEach(function (f) {
-                expect(f.name).toBeDefined();
-                expect(f.name).not.toBe('');
+            allFeeds.forEach(function (feed) {
+                expect(feed.name).toBeDefined();
+                expect(feed.name).not.toBe('');
+                // toBeTruthy works, but I find this more descriptive
             });
         });
     });
@@ -101,10 +103,13 @@ $(function () {
     describe('New feed selection', function () {
         /* loadFeed() is asynchronous
          */
+        var originalEntries;
         beforeEach(function (done) {
-            loadFeed(0, done);
-            this.originalEntries = $('.entry-link');
-            loadFeed(1, done);
+            loadFeed(0, function () {
+                originalEntries = $('.entry-link');
+                loadFeed(1, done);
+            });
+
         });
 
         /* A test that ensures when a new feed is loaded
@@ -112,7 +117,7 @@ $(function () {
          * Remember, loadFeed() is asynchronous.
          */
         it('should actually change the content', function () {
-            expect($('.entry-link')).not.toBe(this.originalEntries);
+            expect($('.entry-link').text()).not.toBe(originalEntries.text());
         });
     });
 
