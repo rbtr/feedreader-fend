@@ -3,7 +3,7 @@
 In this project I have added [Jasmine](http://jasmine.github.io/) tests according to the specs outlined in the Project info to the jasmine/spec/feedreader.js script.
 
 # To run:
-This project is hosted on [gh-sites](https://rbtr.github.io/feedreader-fend).
+This project is hosted on [gh-pages](https://rbtr.github.io/feedreader-fend).
 To run manually, clone the repo and then open `index.html`
 
 
